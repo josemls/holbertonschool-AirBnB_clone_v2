@@ -59,4 +59,3 @@ class FileStorage:
             self.save()
         else:
             pass
-
