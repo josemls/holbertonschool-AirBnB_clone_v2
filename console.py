@@ -113,44 +113,35 @@ class HBNBCommand(cmd.Cmd):
         """ Overrides the emptyline method of CMD """
         pass
 
-    def do_create(self, args):
+    def do_create(self, prompt):
         """ Create an object of any class"""
-        if not args:
+
+        if not prompt:
             print("** class name missing **")
             return
 
-        arglist = args.split(' ')
+        arg_list = prompt.split(' ')
 
-        if arglist[0] not in HBNBCommand.classes:
+        if arg_list[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
             return
 
-        elif len(args) == 1:
-            new_obj = HBNBCommand.classes[arglist[0]]()
+        elif len(prompt) == 1:
+            new_obj = HBNBCommand.classes[arg_list[0]]()
+
         else:
-            paramer_dict = {}
 
-            for parameter in arglist[1:]:
+            for parameters in arg_list:
+                param = parameters.split("=")
+                arg_stp1 = param[1].replace("\"", " ")
+                arg_stp2 = arg_stp1.replace("_", "")
 
-                paramer_list = parameter.split('=')
-                key = paramer_list[0]
-                value = paramer_list[1]
+                if isinstance(arg_stp2, int):
+                    arg_stp2 = int(parameters[1])
 
-                if value[0] and value[-1] == '"':
-                    value = value[1:-1]
+                elif isinstance(arg_stp2, float):
+                    arg_stp2 = float(parameters[1])
 
-                    if "_" in value:
-                        value.replace("_", " ")
-                else:
-                    value = eval(value)
-                paramer_dict[key] = value
-
-            new_obj = HBNBCommand.classes[arglist[0]]()
-            new_obj.__dict__.update(paramer_dict)
-
-        storage.save()
-        print(new_obj.id)
-        storage.save()
 
     def help_create(self):
         """ Help information for the create method """
