@@ -128,12 +128,13 @@ class HBNBCommand(cmd.Cmd):
         if len(arg_list) == 1:
             new_obj = HBNBCommand.classes[arg_list[0]]()
             print(new_obj.id)
+            storage.save()
 
         else:
             new_obj = HBNBCommand.classes[arg_list[0]]()
             for parameters in arg_list[1:]:
                 param = parameters.split("=")
-                arg_stp1 = param[1].replace("\"", " ")
+                arg_stp1 = param[1].replace("\"", "")
                 arg_stp2 = arg_stp1.replace("_", " ")
 
                 if isinstance(arg_stp2, int):
@@ -141,9 +142,7 @@ class HBNBCommand(cmd.Cmd):
 
                 elif isinstance(arg_stp2, float):
                     arg_stp2 = float(param[1])
-
-                if hasattr(new_obj, param[0]):
-                    setattr(new_obj, param[0], arg_stp2)
+                setattr(new_obj, param[0], arg_stp2)
             storage.save()
             print(new_obj.id)
             storage.save()
