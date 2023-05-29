@@ -119,7 +119,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
             return
 
-        arg_list = prompt.split(' ')
+        arg_list = prompt.split(" ")
 
         if arg_list[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
@@ -127,12 +127,15 @@ class HBNBCommand(cmd.Cmd):
 
         if len(arg_list) == 1:
             new_obj = HBNBCommand.classes[arg_list[0]]()
+            new_obj.save()
             print(new_obj.id)
-            storage.save()
 
         else:
+
             new_obj = HBNBCommand.classes[arg_list[0]]()
+
             for parameters in arg_list[1:]:
+
                 param = parameters.split("=")
                 arg_stp1 = param[1].replace("\"", "")
                 arg_stp2 = arg_stp1.replace("_", " ")
@@ -142,10 +145,12 @@ class HBNBCommand(cmd.Cmd):
 
                 elif isinstance(arg_stp2, float):
                     arg_stp2 = float(param[1])
-                setattr(new_obj, param[0], arg_stp2)
-            storage.save()
+
+                if hasattr(new_obj, param[0]):
+                    setattr(new_obj, param[0], arg_stp2)
+
+            new_obj.save()
             print(new_obj.id)
-            storage.save()
 
     def help_create(self):
         """Help information for the create method."""
