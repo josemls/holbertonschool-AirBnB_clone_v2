@@ -20,6 +20,7 @@ class FileStorage:
 
     def save(self):
         """Save storage dictionary to file."""
+
         with open(FileStorage.__file_path, 'w') as f:
             temp = {}
             temp.update(FileStorage.__objects)
@@ -54,8 +55,6 @@ class FileStorage:
     def delete(self, obj=None):
         """delete obj from"""
         if obj is not None:
-            del FileStorage.__objects[obj.to_dict()[
-                '__class__'] + '.' + obj.id]
-            self.save()
-        else:
-            pass
+            key = obj.__class__.__name__ + '.' + obj.id
+            if key in FileStorage.__objects:
+                del FileStorage.__objects[key]
