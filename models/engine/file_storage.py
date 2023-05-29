@@ -12,7 +12,6 @@ class FileStorage:
 
     def all(self, cls=None):
         """Return a dictionary of models currently in storage."""
-        
         if cls is None:
             return FileStorage.__objects
         else:
@@ -29,7 +28,6 @@ class FileStorage:
 
     def save(self):
         """Save storage dictionary to file."""
-
         with open(FileStorage.__file_path, 'w') as f:
             temp = {}
             temp.update(FileStorage.__objects)
