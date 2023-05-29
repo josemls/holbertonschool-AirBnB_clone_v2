@@ -234,11 +234,11 @@ class HBNBCommand(cmd.Cmd):
                 if args not in HBNBCommand.classes:
                     print("** class doesn't exist **")
                     return
-                for k, v in new_obj.all().items():
+                for k, v in storage.all().items():
                     if k.split('.')[0] == args:
                         print_list.append(str(v))
             else:
-                for k, v in new_obj.all(args).items():
+                for k, v in storage.all(args).items():
                     print_list.append(str(v))
 
         else:
@@ -246,11 +246,11 @@ class HBNBCommand(cmd.Cmd):
                 if args not in HBNBCommand.classes:
                     print("** class doesn't exist **")
                     return
-                for k, v in new_obj._FileStorage__objects.items():
+                for k, v in storage._FileStorage__objects.items():
                     if k.split('.')[0] == args:
                         print_list.append(str(v))
             else:
-                for k, v in new_obj._FileStorage__objects.items():
+                for k, v in storage._FileStorage__objects.items():
                     print_list.append(str(v))
 
         print(print_list)
@@ -263,7 +263,7 @@ class HBNBCommand(cmd.Cmd):
     def do_count(self, args):
         """Count current number of class instances."""
         count = 0
-        for k, v in storage._FileStorage__objects.items():
+        for k, v in new_obj._FileStorage__objects.items():
             if args == k.split('.')[0]:
                 count += 1
         print(count)
@@ -333,7 +333,7 @@ class HBNBCommand(cmd.Cmd):
             args = [att_name, att_val]
 
         # retrieve dictionary of current objects
-        new_dict = storage.all()[key]
+        new_dict = new_obj.all()[key]
 
         # iterate through attr names and values
         for i, att_name in enumerate(args):
