@@ -1,10 +1,8 @@
 #!/usr/bin/python3
-"""Place Module for HBNB project."""
+""" Place Module for HBNB project """
 from models.base_model import BaseModel, Base
-from models.amenity import Amenity
 from sqlalchemy import Column, String, Integer, Float, ForeignKey, Table
 from sqlalchemy.orm import relationship
-from os import getenv
 
 metadata = Base.metadata
 
@@ -30,24 +28,5 @@ class Place(BaseModel, Base):
     price_by_night = Column(Integer, nullable=False, default=0)
     latitude = Column(Float, nullable=True)
     longitude = Column(Float, nullable=True)
-    amenity_ids = []
-
-    if getenv('HBNB_TYPE_STORAGE') == 'db':
-        amenities = relationship(
-            'Amenity', secondary=place_amenity, viewonly=False)
-
-    @property
-    def amenities(self):
-        """Return a list of amenities related to the place."""
-        from models import storage
-        amenities_list = []
-        for item in storage.all(Amenity).values():
-            if item.id == self.amenity_ids:
-                amenities_list.append(item)
-        return amenities_list
-
-    @amenities.setter
-    def amenities(self, object):
-        """Add an amenity to the amenities list."""
-        if type(object) == Amenity:
-            self.amenity_ids.append(object.id)
+    amenities = relationship(
+        'Amenity', secondary=place_amenity, viewonly=False)
