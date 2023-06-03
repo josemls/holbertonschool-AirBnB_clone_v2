@@ -1,1 +1,34 @@
-{"State.a7af3f93-8123-4ef5-8368-0dca58e8b6b4": {"id": "a7af3f93-8123-4ef5-8368-0dca58e8b6b4", "created_at": "2023-05-25T18:20:20.946548", "updated_at": "2023-05-25T18:20:20.946557", "__class__": "State"}, "State.91046c94-5a4e-4608-ba26-af17eafa1c42": {"id": "91046c94-5a4e-4608-ba26-af17eafa1c42", "created_at": "2023-05-25T18:20:20.946836", "updated_at": "2023-05-25T18:20:20.946838", "__class__": "State"}, "Place.b5620836-4530-4451-a88c-22c0a9cd7e2d": {"id": "b5620836-4530-4451-a88c-22c0a9cd7e2d", "created_at": "2023-05-25T18:20:20.947969", "updated_at": "2023-05-25T18:20:20.947973", "number_rooms": 4, "number_bathrooms": 2, "max_guest": 10, "price_by_night": 300, "latitude": 37.773972, "longitude": -122.431297, "__class__": "Place"}}
+{
+  "State.db3aca50-4343-416c-8e4f-34fdf4fb5a2c": {
+    "id": "db3aca50-4343-416c-8e4f-34fdf4fb5a2c",
+    "created_at": "2023-05-29T13:00:11.526349",
+    "updated_at": "2023-05-29T13:00:11.526377",
+    "name": "California",
+    "__class__": "State"
+  },
+  "User.69ae2a39-5a65-43e8-95a2-466daf5a2107": {
+    "id": "69ae2a39-5a65-43e8-95a2-466daf5a2107",
+    "created_at": "2023-05-29T13:00:31.048287",
+    "updated_at": "2023-05-29T13:00:31.048391",
+    "__class__": "User"
+  },
+  "User.0329a37b-c277-4734-9013-6f36a5289fa5": {
+    "id": "0329a37b-c277-4734-9013-6f36a5289fa5",
+    "created_at": "2023-05-29T13:20:10.294355",
+    "updated_at": "2023-05-29T13:20:10.294638",
+    "__class__": "User"
+  },
+  "User.8b959a39-6cc9-404b-a274-7314d4e42664": {
+    "id": "8b959a39-6cc9-404b-a274-7314d4e42664",
+    "created_at": "2023-05-29T13:22:37.379051",
+    "updated_at": "2023-05-29T13:22:37.379126",
+    "__class__": "User"
+  },
+  "State.f9a785c4-3d12-41d5-a52b-e075e2c40247": {
+    "id": "f9a785c4-3d12-41d5-a52b-e075e2c40247",
+    "created_at": "2023-05-29T13:23:08.956399",
+    "updated_at": "2023-05-29T13:23:08.956506",
+    "name": "NewYork",
+    "__class__": "State"
+  }
+}
