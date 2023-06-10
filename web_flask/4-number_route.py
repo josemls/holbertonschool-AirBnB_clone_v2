@@ -36,7 +36,7 @@ def another_string(text):
 @app.route('/number/<int:n>', strict_slashes=False)
 def just_a_number(n):
     """Return a string if the value is an integer."""
-    return f"{n} is a number."
+    return f"{n} is a number"
 
 
 if __name__ == '__main__':
