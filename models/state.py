@@ -19,10 +19,7 @@ class State(BaseModel, Base):
     else:
         @property
         def cities(self):
-            """
-            The function "cities" is not defined and therefore cannot be/
-            summarized.
-            """
+            """Return cities that have the same state."""
             from models import storage
 
             all_cities = storage.all(City)
