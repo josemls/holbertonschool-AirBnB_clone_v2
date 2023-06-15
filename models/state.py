@@ -21,7 +21,9 @@ class State(BaseModel, Base):
         def cities(self):
             """Return cities that have the same state."""
             from models import storage
-
+            new_list = []
             all_cities = storage.all(City)
-            return [city for city in all_cities.values()
-                    if city.state_id == self.id]
+            for city in all_cities.values():
+                if city.__dict__['state_id'] == self.id:
+                    new_list.append(city)
+            return new_list
